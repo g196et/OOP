@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Humans
 {
-    class Worker : Human
+    public class Worker : Human
     {
         static string workPlace;
         static float workExperience;

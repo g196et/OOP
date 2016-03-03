@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Humans
 {
-    class Human
+    public class Human
     {
         public string type;
         string firstName;

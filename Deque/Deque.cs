@@ -8,7 +8,7 @@ using System.IO;
 
 namespace Deque
 {
-    class Deque<T> : IDeque<T>
+    public class Deque<T> : IDeque<T>
     {
         public T[] deque;
         public int Length { get { return deque.Length; } }

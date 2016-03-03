@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Humans
 {
-    class Student : Human
+    public class Student : Human
     {
         static string university;
         static int course;
