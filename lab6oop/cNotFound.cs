@@ -1,28 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Commands
-{
-    class NotFoundCommand : ICommand
-    {
+namespace Commands {
+
+    internal class NotFoundCommand : ICommand {
         public string Name { get; set; }
         public string Help { get { return "команда не найдена"; } }
-        public string[] Synonyms
-        {
+
+        public string[] Synonyms {
             get { return new string[] { }; }
         }
-        public string Description
-        {
+
+        public string Description {
             get { return ""; }
         }
 
-        public void Execute(params string[] parameters)
-        {
+        public void Execute (params string[] parameters) {
             Console.WriteLine("Команда `{0}`  не найдена ", Name);
         }
     }
-
 }

@@ -1,56 +1,48 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
-namespace Humans
-{
-    public class Human
-    {
+namespace Humans {
+
+    public class Human {
         public string type;
-        string firstName;
-        string surname;
-        DateTimeOffset dateOfBirth;
-        bool gender;
-        FileInfo file;
+        private string firstName;
+        private string surname;
+        private DateTimeOffset dateOfBirth;
+        private bool gender;
+        private FileInfo file;
         public StreamWriter writer;
         public StreamReader reader;
-        public Human()
-        {
+
+        public Human () {
             type = typeof(Human).ToString();
             firstName = "";
             surname = "";
             dateOfBirth = new DateTimeOffset();
             gender = false;
         }
-        public virtual void Openf(string fileName, bool regim)
-        {
+
+        public virtual void Openf (string fileName, bool mode) {
             file = new FileInfo(fileName);
-            if (!file.Exists)
-            {
+            if (!file.Exists) {
                 var myFile = File.Create(fileName);
                 myFile.Close();
             }
-            if (regim)
+            if (mode)
                 writer = new StreamWriter(fileName);
             else
                 reader = new StreamReader(fileName);
         }
 
-        ///Метод закрытия файла
-        public void Closef(string fileName)
-        {
+        // закрытие файла
+        public void Closef (string fileName) {
             if (reader != null)
                 reader.Dispose();
             if (writer != null)
                 writer.Dispose();
         }
 
-        ///Метод ввода
-        public virtual void Enter()///ввод
-        {
+        // ввод данных в класс
+        public virtual void Enter () {
             Console.WriteLine("Введите данные:");
             Console.Write("Имя: ");
             firstName = Console.ReadLine();
@@ -58,78 +50,68 @@ namespace Humans
             surname = Console.ReadLine();
             Console.Write("Дата рождения: ");
             bool date = false;
-            while (!date)
-            {
-                try
-                {
+            while (!date) {
+                try {
                     dateOfBirth = DateTimeOffset.Parse(Console.ReadLine());
                     date = true;
-                }
-                catch
-                {
-                    Console.WriteLine("Дата введена некорректно(формат даты ДД/ММ/ГГГГ)\nПовторите ввод даты");
+                } catch {
+                    Console.WriteLine("Дата введена некорректно (формат даты ДД/ММ/ГГГГ)\nПовторите ввод даты");
                     Console.Write("Дата рождения: ");
                 }
             }
-            Console.Write("Пол(male или female): ");
+            Console.Write("Пол (м или ж): ");
             string genderStr = Console.ReadLine();
-            while ((genderStr != "male") && (genderStr != "female"))
-            {
-                Console.WriteLine("Error. Try again");
+            while ((genderStr != "м") && (genderStr != "ж")) {
+                Console.WriteLine("Некорректный ввод, попробуйте еще раз");
                 genderStr = Console.ReadLine();
             }
-            switch (genderStr)
-            {
-                case "male":
+            switch (genderStr) {
+                case "м":
                     gender = true;
                     break;
-                case "female":
+
+                case "ж":
                     gender = false;
                     break;
             }
         }
 
-        ///Метод вывода
-        public virtual void Print()
-        {
+        // вывод данных
+        public virtual void Print () {
             Console.WriteLine("\nИмя: " + firstName);
-            Console.WriteLine("Фамилия : " + surname);
-            Console.WriteLine("Дата рождения : " + dateOfBirth.Date.ToShortDateString().Replace('.', '/'));
+            Console.WriteLine("Фамилия: " + surname);
+            Console.WriteLine("Дата рождения: " + dateOfBirth.Date.ToShortDateString().Replace('.', '/'));
             string genderStr;
             if (gender)
-                genderStr = "male";
+                genderStr = "м";
             else
-                genderStr = "female";
+                genderStr = "ж";
             Console.WriteLine("Пол: " + genderStr);
         }
 
-        ///Метод записи в файл
-        public virtual void InFile(StreamWriter writer)
-        {
+        // запись в файл
+        public virtual void InFile (StreamWriter writer) {
             writer.WriteLine(firstName);
             writer.WriteLine(surname);
             writer.WriteLine(dateOfBirth.Date.ToShortDateString());
             if (gender)
-                writer.WriteLine("male");
+                writer.WriteLine("м");
             else
-                writer.WriteLine("female");
+                writer.WriteLine("ж");
         }
-        ///Метод считывания из файла
-        public virtual void OutFile(StreamReader reader)
-        {
-           
+
+        // считывание из файла
+        public virtual void OutFile (StreamReader reader) {
             firstName = reader.ReadLine();
             surname = reader.ReadLine();
             dateOfBirth = DateTimeOffset.Parse(reader.ReadLine().Replace('.', '/'));
-            if (reader.ReadLine() == "male")
+            if (reader.ReadLine() == "м")
                 gender = true;
             else
                 gender = false;
-            //reader.Dispose();
         }
 
-        public override string ToString()
-        {
+        public override string ToString () {
             this.Print();
             return "";
         }

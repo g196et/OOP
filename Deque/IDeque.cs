@@ -1,17 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Deque {
 
-namespace Deque
-{
     ///<summary>
     /// Контейнер "Дека". Поддерживает добавление/удаление с двух сторон,
     /// а также произвольный доступ
     ///</summary>
-    interface IDeque<T>
-    {
+    internal interface IDeque<T> {
 
         ///<summary>Количество элементов в контейнере, целое число >= 0</summary>
         int Length { get; }
@@ -32,17 +25,17 @@ namespace Deque
         /// <summary>Возвращает первый элемент с хвоста последовательности и
         /// удаляет его</summary>
         /// При Length == 0 бросается  <throws>InvalidOperationException</throws>
-        T Pop();
+        T Pop ();
 
         /// <summary>Добавляет элемент в  хвост последовательности</summary>
-        void Push(T val);
+        void Push (T val);
 
         /// <summary>Возвращает первый элемент с головы последовательности и
         /// удаляет его</summary>
         /// При Length == 0 бросается  <throws>InvalidOperationException</throws>
-        T Unshift();
+        T Unshift ();
 
         /// <summary>Добавляет элемент в голову последовательности</summary>
-        void Shift(T val);
+        void Shift (T val);
     }
 }

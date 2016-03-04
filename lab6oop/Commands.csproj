@@ -4,13 +4,28 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CA2CEA22-8ED8-4D2A-AC01-3079E2E05C75}</ProjectGuid>
+    <ProjectGuid>{73DDD8AF-3DD5-4AA8-BE94-7D5F653FC919}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>lab5</RootNamespace>
     <AssemblyName>lab5</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -42,33 +57,43 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Application.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="ExitCommand.cs" />
-    <Compile Include="ExplainCommand.cs" />
-    <Compile Include="GetIndexCommand.cs" />
-    <Compile Include="HelpCommand.cs" />
+    <Compile Include="Humans.cs" />
+    <Compile Include="cEdit.cs" />
+    <Compile Include="cExit.cs" />
+    <Compile Include="cExplain.cs" />
+    <Compile Include="cGetIndex.cs" />
+    <Compile Include="cHelpCommand.cs" />
     <Compile Include="ICommand.cs" />
     <Compile Include="NameTable.cs" />
-    <Compile Include="NotFoundCommand.cs" />
-    <Compile Include="LoadCimmand.cs" />
-    <Compile Include="PopCommand.cs" />
-    <Compile Include="PrintCommand.cs" />
+    <Compile Include="cNotFound.cs" />
+    <Compile Include="cLoad.cs" />
+    <Compile Include="cPop.cs" />
+    <Compile Include="cPrint.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PushCommand.cs" />
-    <Compile Include="ShiftCommand.cs" />
-    <Compile Include="UnshiftCommand.cs" />
+    <Compile Include="cPush.cs" />
+    <Compile Include="cShift.cs" />
+    <Compile Include="cUnshift.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 и x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Deque\Deque.csproj">
-      <Project>{84808ab7-9398-495d-a011-404d73a645d7}</Project>
+      <Project>{8eea01fe-9b1c-42b5-ba6c-f63bd0183725}</Project>
       <Name>Deque</Name>
     </ProjectReference>
     <ProjectReference Include="..\Humans\Humans.csproj">
-      <Project>{6f5dbb44-a558-425b-a00e-c2f4827670cd}</Project>
+      <Project>{7ca878be-50eb-4dc6-9fe3-af42e8c077fe}</Project>
       <Name>Humans</Name>
     </ProjectReference>
   </ItemGroup>

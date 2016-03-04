@@ -1,69 +1,62 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 
-namespace Humans
-{
-    public class Student : Human
-    {
-        static string university;
-        static int course;
-        static float grandPointAverage;
-        FileInfo file;
+namespace Humans {
 
-        public Student()
-        {
+    public class Student : Human {
+        private static string university;
+        private static int course;
+        private static float grandPointAverage;
+        private FileInfo file;
+
+        public Student () {
             university = "";
             course = 0;
             grandPointAverage = 0;
         }
-        public override void Openf(string fileName, bool regim)
-        {
+
+        public override void Openf (string fileName, bool mode) {
             file = new FileInfo(fileName);
-            if (!file.Exists)
-            {
+            if (!file.Exists) {
                 var myFile = File.Create(fileName);
                 myFile.Close();
             }
-            if (regim)
+            if (mode)
                 writer = new StreamWriter(fileName);
             else
                 reader = new StreamReader(fileName);
         }
-        public override void Enter()
-        {
+
+        public override void Enter () {
             base.Enter();
             Console.Write("ВУЗ: ");
             university = Console.ReadLine();
             Console.Write("Курс: ");
             while (!int.TryParse(Console.ReadLine(), out course))
-                Console.WriteLine("heh");
-            Console.Write("Ср. балл: ");
+                Console.WriteLine("Некорректный ввод, курс — целое число");
+            Console.Write("Средний балл: ");
             while (!float.TryParse(Console.ReadLine(), out grandPointAverage))
-                Console.WriteLine("heh");
+                Console.WriteLine("Некорректный ввод, введите число.");
         }
-        public override void Print()
-        {
+
+        public override void Print () {
             base.Print();
             Console.Write("ВУЗ: ");
             Console.WriteLine(university);
             Console.Write("Курс: ");
             Console.WriteLine(course);
-            Console.Write("Ср. балл: ");
+            Console.Write("Средний балл: ");
             Console.WriteLine(grandPointAverage);
         }
-        public override void InFile(StreamWriter sw)
-        {
+
+        public override void InFile (StreamWriter sw) {
             base.InFile(sw);
             sw.WriteLine(university);
             sw.WriteLine(course);
             sw.WriteLine(grandPointAverage);
         }
-        public override void OutFile(StreamReader sr)///Reading null from the file
-        {
+
+        public override void OutFile (StreamReader sr) {
             base.OutFile(sr);
             university = sr.ReadLine();
             course = int.Parse(sr.ReadLine());
